@@ -5,8 +5,8 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Net::IP::MAPCALC',
     VERSION_FROM      => 'lib/Net/IP/MAPCALC.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
+    PREREQ_PM         => {Net::IP => 1.25}, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/Net/IP/MAPCALC.pm', # retrieve abstract from module
-       AUTHOR         => 'User & <kubota@nonet>') : ()),
+       AUTHOR         => 'skubota <skubota@cpan.org>') : ()),
 );
