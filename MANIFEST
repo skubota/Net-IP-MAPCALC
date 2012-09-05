@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Net-IP-MAPCALC.t
+lib/Net/IP/MAPCALC.pm
+sample/mapcalc.pl
+sample/rule_selection.pl
