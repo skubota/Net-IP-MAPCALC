@@ -2,11 +2,11 @@
 
 use strict;
 use warnings;
-use Net::IP;
+use Net::IP qw(:PROC);
 use Net::IP::MAPCALC;
 use Data::Dumper;
 
-my $data = '2001:0db8:0080:7000:00c0:0002:8070:0000';
+my $data = '2001:db8:0080:7000:00c0:0002:8070:0000';
 
 my @mapping_rules = (
     {
@@ -16,7 +16,7 @@ my @mapping_rules = (
         'psid_offset' => 4
     },
     {
-        'ipv6'        => '2001:db8:11:/40',
+        'ipv6'        => '2001:db8:11::/40',
         'ipv4'        => '192.168.0.0/24',
         'ea_len'      => 16,
         'psid_offset' => 4
@@ -38,8 +38,8 @@ foreach my $ref (@mapping_rules) {
         $rules = $ref;
     }
 }
-if ( defined $rules ) {
-    die "Error: mapping rules not found\n" );
+if ( !defined $rules ) {
+    die "Error: mapping rules not found\n";
 }
 
 my $map = Net::IP::MAPCALC->new($rules);

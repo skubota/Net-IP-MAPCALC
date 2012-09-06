@@ -6,8 +6,6 @@
 use Test::More tests => 4;
 BEGIN { use_ok('Net::IP::MAPCALC') };
 
-#!/usr/bin/perl
-
 use Net::IP::MAPCALC;
 ok $map = Net::IP::MAPCALC->new({
     'ipv6_prefix'     => '2001:db8::',
