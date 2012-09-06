@@ -17,11 +17,8 @@ ok $map = Net::IP::MAPCALC->new({
     'ea_len'          => 16,
     'psid_offset'     => 4
 });
-isnt $map->error();
 ok $map->ipv4_to_ipv6( '192.0.2.128', '34567' );
-isnt $map->error();
 ok $map->ipv6_to_ipv4('2001:0db8:0080:7000:00c0:0002:8070:0000');
-isnt $map->error();
 
 #########################
 
