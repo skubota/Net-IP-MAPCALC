@@ -24,10 +24,10 @@ sub check {
         delete( $self->{$_} );
     }
     if( !$data->{ipv4_prefix} && !$data->{ipv4_len} && $data->{ipv4}){
-       my ($data->{ipv4_prefix},$data->{ipv4_len})=split /\//,$data->{ipv4};
+       ($data->{ipv4_prefix},$data->{ipv4_len})=split /\//,$data->{ipv4};
     }
     if( !$data->{ipv6_prefix} && !$data->{ipv6_len} && $data->{ipv6}){
-       my ($data->{ipv6_prefix},$data->{ipv6_len})=split /\//,$data->{ipv6};
+       ($data->{ipv6_prefix},$data->{ipv6_len})=split /\//,$data->{ipv6};
     }
     if ( $data->{ipv6_prefix} && new Net::IP( $data->{ipv6_prefix} ) ) {
         $self->{ipv6_prefix} = $data->{ipv6_prefix};
@@ -199,6 +199,8 @@ Version 0.01
 
 Calculation IPv6 address from IPv4 address + port,
 or IPv4 address + port range from IPv6 address.
+
+MAP: http://tools.ietf.org/html/draft-ietf-softwire-map-02
 
 =head2 EXPORT
 
