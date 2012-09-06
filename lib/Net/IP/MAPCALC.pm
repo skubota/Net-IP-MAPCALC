@@ -110,9 +110,10 @@ sub ipv4_to_ipv6 {
     my $bin_port_pad = '0' x ( 16 - length($bin_port) );
     my $bin_psid = substr $bin_port_pad . $bin_port, $self->{psid_offset},
       ( $self->{ea_len} - ( 32 - $self->{ipv4_len} ) );
+    my $bin_psid2 = ('0' x ( 16 - length($bin_psid) )) . $bin_psid;
     my $prefix_pad = '0' x ( 64 - ( $self->{ipv6_len} + $self->{ea_len} ) );
     my $suffix_pad = '0' x 8;
-    my $last_pad   = '0' x ( 64 - 8 - 32 - length($bin_psid) );
+    my $last_pad   = '0' x 8;
 
     return ip_bintoip(
         $bin_ip6 
@@ -121,7 +122,7 @@ sub ipv4_to_ipv6 {
           . $prefix_pad
           . $suffix_pad
           . $bin_v4
-          . $bin_psid
+          . $bin_psid2
           . $last_pad,
         6
     );
