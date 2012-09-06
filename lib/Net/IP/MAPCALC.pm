@@ -223,14 +223,13 @@ You can also look for information at:
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2012 Satoshi KUBOTA.
+COPYRIGHT AND LICENCE
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+Copyright (C) 2012 by skubota
 
-See http://dev.perl.org/licenses/ for more information.
-
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.10.1 or,
+at your option, any later version of Perl 5 you may have available.
 
 =cut
 
