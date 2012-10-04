@@ -162,6 +162,11 @@ sub ipv6_to_ipv4 {
     return ip_bintoip( $bin_ipv4_prefix . $bin_ipv6_in_ipv4, 4 ), $port_range;
 }
 
+sub get_ratio {
+    my ( $self ) = @_;
+    return 2**($self->{ea_len} - ( 32 - $self->{ipv4_len} ));
+}
+
 sub dec2bin {
     my ( $self, $dec ) = @_;
     $str = unpack( "B32", pack( "N", $dec ) );

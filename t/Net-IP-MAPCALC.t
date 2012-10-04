@@ -3,7 +3,7 @@
 
 #########################
 
-use Test::More tests => 4;
+use Test::More tests => 5;
 use Net::IP::MAPCALC;
 BEGIN { use_ok('Net::IP::MAPCALC') };
 
@@ -23,6 +23,8 @@ my ($ipv4,$ports)= $map->ipv6_to_ipv4('2001:0db8:0080:7000:00c0:0002:8000:7000')
 diag explain $ipv4;
 diag explain $ports;
 is ($ipv4,'192.0.2.128','ipv6_to_ipv4 test');
+my $ratio=$map->get_ratio;
+is ($ratio,'256','get_ratio test');
 
 #########################
 

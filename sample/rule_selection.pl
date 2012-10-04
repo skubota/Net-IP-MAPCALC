@@ -29,11 +29,10 @@ my $data_bin = $data_ip->binip();
 
 foreach my $ref (@mapping_rules) {
     my ( $ref_nw, $ref_len ) = split /\//, $ref->{'ipv6'};
-    my $ref_ip     = new Net::IP( $ref_nw );
-    my $ref_bin    = $ref_ip->binip();
-    if (
-        ( substr( $data_bin, 0, $ref_len ) ) eq ( substr( $ref_bin, 0, $ref_len ) )
-      )
+    my $ref_ip  = new Net::IP($ref_nw);
+    my $ref_bin = $ref_ip->binip();
+    if ( ( substr( $data_bin, 0, $ref_len ) ) eq
+        ( substr( $ref_bin, 0, $ref_len ) ) )
     {
         $rules = $ref;
     }
