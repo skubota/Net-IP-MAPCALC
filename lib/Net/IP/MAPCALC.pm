@@ -167,6 +167,11 @@ sub get_ratio {
     return 2**($self->{ea_len} - ( 32 - $self->{ipv4_len} ));
 }
 
+sub get_psidlen {
+    my ( $self ) = @_;
+    return $self->{ea_len} - ( 32 - $self->{ipv4_len}) ;
+}
+
 sub dec2bin {
     my ( $self, $dec ) = @_;
     $str = unpack( "B32", pack( "N", $dec ) );
@@ -199,7 +204,7 @@ Version 0.01
 
   my $ipv6_addr = $map->ipv4_to_ipv6( '192.0.2.128', '34567' );
   my ($ipv4_addr,$ports) = $map->ipv6_to_ipv4('2001:0db8:0080:7000:00c0:0002:8070:0000');
-
+  my $shareing_ratio = $map->get_ratio;
 
 =head1 DESCRIPTION
 
@@ -208,7 +213,13 @@ or IPv4 address + port range from IPv6 address.
 
 MAP: http://tools.ietf.org/html/draft-ietf-softwire-map-02
 
-=head2 EXPORT
+=head1 METHODS
+=head2 new
+
+You should not need to call this method directory. Instead:
+  my $config = Bot::Net->config;
+will call the constructor as needed.
+
 
 =head1 AUTHOR
 
