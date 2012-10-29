@@ -162,6 +162,17 @@ sub ipv6_to_ipv4 {
     return ip_bintoip( $bin_ipv4_prefix . $bin_ipv6_in_ipv4, 4 ), $port_range;
 }
 
+sub is_valid {
+    my ( $self, $addr ) = @_;
+    my $pn=Net::IP::ip_get_version($addr);
+    if($pn == 6){
+      return Net::IP::ip_is_ipv4(($self->ipv6_to_ipv4($addr))[0]);
+    }else{
+      my ($ipv4,$port)=split /:/,$addr;
+      return Net::IP::ip_is_ipv6($self->ipv4_to_ipv6($ipv4,$port));
+    }
+}
+
 sub get_ratio {
     my ( $self ) = @_;
     return 2**($self->{ea_len} - ( 32 - $self->{ipv4_len} ));
@@ -217,36 +228,65 @@ MAP: http://tools.ietf.org/html/draft-ietf-softwire-map-02
 =head2 new
 
 You should not need to call this method directory. Instead:
-  my $config = Bot::Net->config;
+ my $map = Net::IP::MAPCALC->new($mapping_rule);
 will call the constructor as needed.
 
 
-=head1 AUTHOR
+=head2 ipv4_to_ipv6
+
+calc ipv4 and port to ipv6
+
+    params  : IPv4,Port
+    Returns : IPv6
+
+C<$ipv6 = $map->ipv4_to_ipv6($ipv4,$port);>
+
+=head2 ipv6_to_ipv4
+
+calc ipv6 to ipv4 and port-set
+
+    Params  : IPv6
+    Returns : IPv4,Port-set
+
+C<($ipv4,$port-set) = $map->ipv6_to_ipv4($ipv6);>
+
+=head2 is_valid
+
+validate address
+
+    Params  : IPv6 or IPv4,Port
+    Returns : 1 (yes) or 0 (no)
+
+C< $map->is_valid($ipv6);>
+
+=head2 get_ratio
+
+get shareing ratio from set rule
+
+    Params  : none
+    Returns : ratio (int)
+
+C< $ratio=$map->get_ratio();>
+
+=head2 get_psidlen
+
+get PSID length from set rule
+
+    Params  : none
+    Returns : PSID length (int)
+
+C< $psidlen=$map->get_psidlen();>
+
+
+head1 AUTHOR
 
 Satoshi KUBOTA, skubota at cpan.org
 
+=head1 SEE ALSO
 
-=head1 SUPPORT
+Net::IP
 
-You can find documentation for this module with the perldoc command.
-
-    perldoc Net::IP::MAPCALC
-
-
-You can also look for information at:
-
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 LICENSE AND COPYRIGHT
-
-COPYRIGHT AND LICENCE
-
-Copyright (C) 2012 by skubota
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.10.1 or,
-at your option, any later version of Perl 5 you may have available.
+=cut
 
 =cut
 
