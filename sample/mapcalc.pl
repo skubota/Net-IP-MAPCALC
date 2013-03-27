@@ -12,7 +12,7 @@ my $map = Net::IP::MAPCALC->new(
         'ipv4_prefix' => '192.0.2.0',
         'ipv4_len'    => '24',
         'ea_len'      => 16,
-        'psid_offset' => 4
+        'psid_offset' => 6
     }
 );
 

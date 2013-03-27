@@ -13,13 +13,13 @@ my @mapping_rules = (
         'ipv6'        => '2001:db8:0000::/40',
         'ipv4'        => '192.0.2.0/24',
         'ea_len'      => 16,
-        'psid_offset' => 4
+        'psid_offset' => 6
     },
     {
         'ipv6'        => '2001:db8:1100::/40',
         'ipv4'        => '192.168.0.0/24',
         'ea_len'      => 16,
-        'psid_offset' => 4
+        'psid_offset' => 6
     }
 );
 

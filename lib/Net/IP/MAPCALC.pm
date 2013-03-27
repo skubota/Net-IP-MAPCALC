@@ -23,11 +23,11 @@ sub check {
     {
         delete( $self->{$_} );
     }
-    if( !$data->{ipv4_prefix} && !$data->{ipv4_len} && $data->{ipv4}){
-       ($data->{ipv4_prefix},$data->{ipv4_len})=split /\//,$data->{ipv4};
+    if ( !$data->{ipv4_prefix} && !$data->{ipv4_len} && $data->{ipv4} ) {
+        ( $data->{ipv4_prefix}, $data->{ipv4_len} ) = split /\//, $data->{ipv4};
     }
-    if( !$data->{ipv6_prefix} && !$data->{ipv6_len} && $data->{ipv6}){
-       ($data->{ipv6_prefix},$data->{ipv6_len})=split /\//,$data->{ipv6};
+    if ( !$data->{ipv6_prefix} && !$data->{ipv6_len} && $data->{ipv6} ) {
+        ( $data->{ipv6_prefix}, $data->{ipv6_len} ) = split /\//, $data->{ipv6};
     }
     if ( $data->{ipv6_prefix} && new Net::IP( $data->{ipv6_prefix} ) ) {
         $self->{ipv6_prefix} = $data->{ipv6_prefix};
@@ -110,10 +110,9 @@ sub ipv4_to_ipv6 {
     my $bin_port_pad = '0' x ( 16 - length($bin_port) );
     my $bin_psid = substr $bin_port_pad . $bin_port, $self->{psid_offset},
       ( $self->{ea_len} - ( 32 - $self->{ipv4_len} ) );
-    my $bin_psid2 = ('0' x ( 16 - length($bin_psid) )) . $bin_psid;
+    my $bin_psid2 = ( '0' x ( 16 - length($bin_psid) ) ) . $bin_psid;
     my $prefix_pad = '0' x ( 64 - ( $self->{ipv6_len} + $self->{ea_len} ) );
-    my $suffix_pad = '0' x 8;
-    my $last_pad   = '0' x 8;
+    my $suffix_pad = '0' x 16;
 
     return ip_bintoip(
         $bin_ip6 
@@ -122,8 +121,7 @@ sub ipv4_to_ipv6 {
           . $prefix_pad
           . $suffix_pad
           . $bin_v4
-          . $bin_psid2
-          . $last_pad,
+          . $bin_psid2 ,
         6
     );
 
@@ -164,23 +162,24 @@ sub ipv6_to_ipv4 {
 
 sub is_valid {
     my ( $self, $addr ) = @_;
-    my $pn=Net::IP::ip_get_version($addr);
-    if($pn == 6){
-      return Net::IP::ip_is_ipv4(($self->ipv6_to_ipv4($addr))[0]);
-    }else{
-      my ($ipv4,$port)=split /:/,$addr;
-      return Net::IP::ip_is_ipv6($self->ipv4_to_ipv6($ipv4,$port));
+    my $pn = Net::IP::ip_get_version($addr);
+    if ( $pn == 6 ) {
+        return Net::IP::ip_is_ipv4( ( $self->ipv6_to_ipv4($addr) )[0] );
+    }
+    else {
+        my ( $ipv4, $port ) = split /:/, $addr;
+        return Net::IP::ip_is_ipv6( $self->ipv4_to_ipv6( $ipv4, $port ) );
     }
 }
 
 sub get_ratio {
-    my ( $self ) = @_;
-    return 2**($self->{ea_len} - ( 32 - $self->{ipv4_len} ));
+    my ($self) = @_;
+    return 2**( $self->{ea_len} - ( 32 - $self->{ipv4_len} ) );
 }
 
 sub get_psidlen {
-    my ( $self ) = @_;
-    return $self->{ea_len} - ( 32 - $self->{ipv4_len}) ;
+    my ($self) = @_;
+    return $self->{ea_len} - ( 32 - $self->{ipv4_len} );
 }
 
 sub dec2bin {
