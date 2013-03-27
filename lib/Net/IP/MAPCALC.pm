@@ -197,7 +197,7 @@ Net::IP::MAPCALC - Perl extension for calculation MAP address
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
