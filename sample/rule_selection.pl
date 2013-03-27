@@ -6,7 +6,7 @@ use Net::IP qw(:PROC);
 use Net::IP::MAPCALC;
 use Data::Dumper;
 
-my $data = '2001:db8:0080:7000:00c0:0002:8070:0000';
+my $data = '2001:0db8:0012:3400:0000:c000:0212:0034';
 
 my @mapping_rules = (
     {

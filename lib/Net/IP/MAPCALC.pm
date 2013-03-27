@@ -212,8 +212,8 @@ Version 0.01
     'psid_offset'     => 6
   });
 
-  my $ipv6_addr = $map->ipv4_to_ipv6( '192.0.2.128', '34567' );
-  my ($ipv4_addr,$ports) = $map->ipv6_to_ipv4('2001:0db8:0080:7000:00c0:0002:8070:0000');
+  my $ipv6_addr = $map->ipv4_to_ipv6( '192.0.2.18', '1232' );
+  my ($ipv4_addr,$ports) = $map->ipv6_to_ipv4('2001:0db8:0012:3400:0000:c000:0212:0034');
   my $shareing_ratio = $map->get_ratio;
 
 =head1 DESCRIPTION

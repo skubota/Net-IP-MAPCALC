@@ -16,6 +16,6 @@ my $map = Net::IP::MAPCALC->new(
     }
 );
 
-print Dumper $map->ipv4_to_ipv6( '192.0.2.128', '34567' );
-print Dumper $map->ipv6_to_ipv4('2001:0db8:0080:7000:00c0:0002:8070:0000');
+print Dumper $map->ipv4_to_ipv6( '192.0.2.18', '1232' );
+print Dumper $map->ipv6_to_ipv4('2001:0db8:0012:3400:0000:c000:0212:0034');
 
