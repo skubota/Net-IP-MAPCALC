@@ -1,9 +1,13 @@
-Net-IP-MAPCALC version 0.01
+Net-IP-MAPCALC version 0.1
 ===========================
 
-Calculation IPv6 address from IPv4 address + port,
+Calculation MAP-E
+
+RFC7597 Mapping of Address and Port with Encapsulation (MAP-E)
+ https://tools.ietf.org/html/rfc7597
+
+IPv6 address from IPv4 address + port,
 or IPv4 address + port range from IPv6 address.
-MAP: http://tools.ietf.org/html/draft-ietf-softwire-map-05
 
 INSTALLATION
 
@@ -22,7 +26,7 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2013 by skubota
+Copyright (C) 2018 by skubota
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.10.1 or,

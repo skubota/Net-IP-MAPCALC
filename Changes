@@ -6,3 +6,6 @@ Revision history for Perl extension Net::IP::MAPCALC.
 
 0.02  Wed Mar 27 15:52:23 2013
 	- update draft-05
+
+0.1   Thu Oct 11 16:44:46 JST 2018
+	- fix RFC7597

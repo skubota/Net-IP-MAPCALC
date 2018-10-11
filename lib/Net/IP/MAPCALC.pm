@@ -1,7 +1,7 @@
 package Net::IP::MAPCALC;
 
 use vars qw($VERSION);
-our $VERSION = '0.02';
+our $VERSION = '0.1';
 use Net::IP qw(:PROC);
 
 sub new {
@@ -220,8 +220,6 @@ Version 0.02
 
 Calculation IPv6 address from IPv4 address + port,
 or IPv4 address + port range from IPv6 address.
-
-MAP: http://tools.ietf.org/html/draft-ietf-softwire-map-05
 
 =head1 METHODS
 =head2 new
